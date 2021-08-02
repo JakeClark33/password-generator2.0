@@ -1,8 +1,8 @@
 // GIVEN I need a new, secure password
 // WHEN I click the button to generate a password
-var specialCharacters = ["!","@","#","$","%","&","*","(",")","?","+","="]
-var upperCase= ["A","B","C","D","E","F","G","H","I","J","K"]
-var lowercase = ["a","b","c","d","e","f","g","h"]
+var specialCharacters = ["!","@","#","$","%","&","*","(",")","?","+","=","-","[","]","{","}","<",">","/",",",".","`",";",":","|"]
+var upperCase= ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+var lowercase = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
 var numbers = [1,2,3,4,5,6,7,8,9,0]
 
 // Assignment code here
@@ -27,9 +27,9 @@ function passwordCriteria(){
         return null;
     }
     var hasSpecialCharacters = confirm("Click okay if you would like to use special characters?");
-    var hasUpperCase = confirm("Does your password contain uppercase characters?");
-    var hasLowerCase = confirm("Does your password contain lowercase characters?")
-    var hasNumbers = confirm("Does your password contain numbers?")
+    var hasUpperCase = confirm("Click okay if you would like to use uppercase characters?");
+    var hasLowerCase = confirm("Click okay if you would like to use lowercase characters?")
+    var hasNumbers = confirm("Click okay if you would like to use numbers?")
     if (hasUpperCase === false && hasLowerCase === false && hasNumbers === false && hasSpecialCharacters === false){
         alert("You must choose at least 1 of the password criteria");
         return null;
@@ -58,11 +58,34 @@ function generatePassword(){
         possibleCharacters = possibleCharacters.concat(specialCharacters);
         guaranteedCharacters.push(getRandom(specialCharacters))
         }
+    if (options.hasNumbers) {
+        possibleCharacters = possibleCharacters.concat(numbers);
+        guaranteedCharacters.push(getRandom(numbers))
+    }
+    if (options.hasUpperCase) {
+        possibleCharacters = possibleCharacters.concat(upperCase);
+        guaranteedCharacters.push(getRandom(upperCase))
+    }
+    if (options.haslowerCase) {
+        possibleCharacters = possibleCharacters.concat(lowerCase);
+        guaranteedCharacters.push(getRandom(lowercase))
+        return possibleCharacters.join('');
+    }
+    console.log(options);
+    
+//Create a for loop for the length of the pswdgen
+for (let i = 0; i < options.length; i++) {
+   var possibleCharacter = getRandom(possibleCharacters);
+   result.push(possibleCharacter);
 }
-//Create a for loop fior the length of the pswdgen
-//push all possible characters into results array
-//return result .join ()
 
+ for  (let i = 0; i < guaranteedCharacters.length; i++) {
+     result[i] = guaranteedCharacters[i];
+ }
+
+//push all possible characters into results array
+return result.join('');
+}
 // WHEN prompted for password criteria
 
 
