@@ -70,11 +70,11 @@ function generatePassword(){
     if (options.hasLowerCase) {
         possibleCharacters = possibleCharacters.concat(lowercase);
         guaranteedCharacters.push(getRandom(lowercase))
-        return possibleCharacters.join('');
+        
 
         }
         
-    console.log(possibleCharacters);
+    console.log(options);
     
 //Create a for loop for the length of the pswdgen
 for (let i = 0; i < options.length; i++) {
