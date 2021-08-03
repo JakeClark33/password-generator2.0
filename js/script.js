@@ -28,8 +28,8 @@ function passwordCriteria(){
     }
     var hasSpecialCharacters = confirm("Click okay if you would like to use special characters?");
     var hasUpperCase = confirm("Click okay if you would like to use uppercase characters?");
-    var hasLowerCase = confirm("Click okay if you would like to use lowercase characters?")
-    var hasNumbers = confirm("Click okay if you would like to use numbers?")
+    var hasLowerCase = confirm("Click okay if you would like to use lowercase characters?");
+    var hasNumbers = confirm("Click okay if you would like to use numbers?");
     if (hasUpperCase === false && hasLowerCase === false && hasNumbers === false && hasSpecialCharacters === false){
         alert("You must choose at least 1 of the password criteria");
         return null;
@@ -62,16 +62,19 @@ function generatePassword(){
         possibleCharacters = possibleCharacters.concat(numbers);
         guaranteedCharacters.push(getRandom(numbers))
     }
+
     if (options.hasUpperCase) {
         possibleCharacters = possibleCharacters.concat(upperCase);
         guaranteedCharacters.push(getRandom(upperCase))
     }
-    if (options.haslowerCase) {
-        possibleCharacters = possibleCharacters.concat(lowerCase);
+    if (options.hasLowerCase) {
+        possibleCharacters = possibleCharacters.concat(lowercase);
         guaranteedCharacters.push(getRandom(lowercase))
         return possibleCharacters.join('');
-    }
-    console.log(options);
+
+        }
+        
+    console.log(possibleCharacters);
     
 //Create a for loop for the length of the pswdgen
 for (let i = 0; i < options.length; i++) {
